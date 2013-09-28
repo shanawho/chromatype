@@ -1,0 +1,21 @@
+.wrapper {
+	width: 600px;
+	margin: 100px auto;
+	text-align: center;
+	background-color: #aaa;
+}
+
+#header {
+	font-family: sans-serif;
+	font-size: 5em;
+}
+
+#subheader {
+	font-family: sans-serif;
+	font-size: 3em;
+}
+
+#text {
+	font-family: sans-serif
+	font-size: 1em;
+}
