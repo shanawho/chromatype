@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Color Scheme Generator</title>
+
+		<!--stylesheets-->
+		<link href="style.css" rel ="stylesheet">
+
+		<!--Loads web fonts-->
+		
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<nav>
+		
+			</nav>
+
+			<div id="content">
+				<center>
+					<h1>Color Scheme Generator</h1>
+				
+					<h2></h2>
+
+					<p></p>
+
+				</center>
+			</div>
+
+		</div>
+
+		<script>
+
+			var questions = {
+				['What is your favorite color', 'blue', 'pink', 'purple'],
+				['What style do you like?', 'bright', 'dark', 'pastel'],
+				['How many colors do you want', 2, 3, 4]
+			};	
+
+			var scheme1 = 0;
+			var scheme2 = 0;
+			var scheme3 = 0;
+
+			for (var i = 0; i < questions.length; i++) {
+				askQ(questions[i]);
+			}
+
+			function askQ(question) {
+				var response = prompt(question[0], ''); //what does the quotes do
+				if (answer == question[1]) {
+					scheme1++;
+				}
+				else if (answer == question[2]) {
+					scheme2++;
+				} else {
+					scheme3++;
+				}
+			}
+
+			var scheme = 0;
+			if (scheme1 > scheme2 && scheme1 > scheme3) {
+				scheme = 'scheme1';
+			}
+			else if ()
+
+		</script>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
