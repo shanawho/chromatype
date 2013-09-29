@@ -1,13 +1,25 @@
-.wrapper {
-	width: 600px;
-	margin: 100px auto;
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+#wrapper {
+	width: 750px;
+	height: 100%;
+	margin: 0 auto;
+	padding: 200px 0 0 0;
 	text-align: center;
-	background-color: #aaa;
+	background-color: #FFFFFF;
 }
 
 #header {
 	font-family: sans-serif;
 	font-size: 5em;
+	line-height: 0;
 }
 
 #subheader {
@@ -15,6 +27,13 @@
 	font-size: 3em;
 }
 
+p {
+	width: 600px;
+	margin: 0 auto;
+	padding: 50px;
+	padding-top: 0;
+	text-align: left;
+}
 #text {
 	font-family: sans-serif;
 	font-size: 1em;
