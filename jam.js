@@ -12,19 +12,15 @@ var paragraphSerif = ['Lora', 'Merriweather', 'Libre Baskerville']
 var script = ['Cherry Swash', 'Pacifico', 'Oleo Script', 'Berkshire Swash', 
 			'Leckerli One', 'Grand Hotel', 'Sofia']
 
-
-
-
-
 function getFont(tag, type) {
 	var i;
 	var font;
 	switch (tag) {
 		case 'header':
-			if (type == 'sansSerif') {
+			if (type == 'casual') {
 				i = Math.floor(Math.random()*headerSans.length);
 				return headerSans[i];
-			} else if (type == 'serif') {
+			} else if (type == 'formal') {
 				i = Math.floor(Math.random()*headerSerif.length);
 				return headerSerif[i];
 			} else if (type == 'script') {
@@ -32,21 +28,18 @@ function getFont(tag, type) {
 				return script[i];		
 			}
 		case 'subheader':
-			if (type == 'sansSerif') {
+			if (type == 'casual') {
 				i = Math.floor(Math.random()*subSans.length);
 				return subSans[i];
-			} else if (type == 'serif') {
+			} else if (type == 'formal') {
 				i = Math.floor(Math.random()*subSerif.length);
 				return subSerif[i];
-			} else if (type == 'script') {
-				i = Math.floor(Math.random()*script.length);
-				return script[i];
 			}
 		case 'paragraph':
-			if (type == 'sansSerif') {
+			if (type == 'casual') {
 				i = Math.floor(Math.random()*paragraphSans.length);
 				return paragraphSans[i];
-			} else if (type == 'serif') {
+			} else if (type == 'formal') {
 				i = Math.floor(Math.random()*paragraphSerif.length);
 				return paragraphSerif[i];
 			}
@@ -67,7 +60,6 @@ function convertWebFont() {
 	return concat;
 }
 
-//var color = Math.floor(Math.random()*16777215).toString(16);
 
 function convertHex(num) {
 	//num always <= 255;
@@ -96,18 +88,6 @@ function concatHex(r, g, b) {
 	return r+g+b;
 }
 
-function darker(c) {
-	var hex;
-	var random = Math.floor((Math.random()*255)+127);
-	switch (c) {
-		case 'red': return concatHex(random, 0, 0);
-		case 'green': return concatHex(0, random, 0);
-		case 'blue': return concatHex(0, 0, random);
-		default: return concatHex(random, random, random);
-			//should never fall to here
-	}
-}
-
 function getColor(mood, shade) {
 	var red;
 	var blue;
@@ -115,6 +95,7 @@ function getColor(mood, shade) {
 	if (mood == 'warm') {
 		red = Math.floor((Math.random()*25)+230);
 		if (shade == 'bright') {			
+			console.log('warm bright');
 			green = Math.floor((Math.random()*255)+1);
 			blue = 0;
 		} else if (shade == 'dark') {
@@ -139,33 +120,23 @@ function getColor(mood, shade) {
 			green = Math.floor((Math.random()*25)+240);
 			blue = Math.floor((Math.random()*25)+240);
 		}
-	} else if (mood == 'neutral') {
-		red = Math.floor((Math.random()*25)+230);
-		if (shade == 'bright') {
-			green = Math.floor((Math.random()*255)+1);
-			blue = 0;
-		} else if (shade == 'dark') {
-			green = Math.floor((Math.random()*170)+1);
-			blue = Math.floor((Math.random()*45)+1);
-		} else if (shade == 'pastel') {
-			red = 255;
-			green = Math.floor((Math.random()*25)+230);
-			blue = Math.floor((Math.random()*25)+230);
-		}
 	}
 	return concatHex(convertHex(red), convertHex(green), convertHex(blue));
 }
 
+
+function concatFonts(fonts) {
+	var docHead = document.getElementsByTagName('head')[0].innerHTML;
+	return "<link href='http://fonts.googleapis.com/css?family=" + fonts + "' rel='stylesheet' type='text/css'>";
+	
+}
 function linkFonts(fonts) {
 	var docHead = document.getElementsByTagName('head')[0].innerHTML;
-	var webFontLink = "<link href='http://fonts.googleapis.com/css?family=" + fonts + "' rel='stylesheet' type='text/css'>";
-	
-	document.getElementById('copy').innerHTML = webFontLink;
 
+	var webFontLink = concatFonts(fonts);
 	docHead += webFontLink;
 	document.getElementsByTagName('head')[0].innerHTML = docHead;
-
-	//and edit text
+	return webFontLink;
 }
 
 function changeFonts() {
@@ -180,11 +151,7 @@ function changeFonts() {
 	//change text of each
 	h1.innerHTML = h1font;
 	h2.innerHTML = h2font;
-	/*p.innerHTML = pfont;*/
 
-	if (h1font == 'Tangerine') {
-		h1.style.fontSize = '10em'
-	}
 	h1.style.fontFamily = h1font;
 	h2.style.fontFamily = h2font;
 	p.style.fontFamily = pfont;
@@ -195,18 +162,26 @@ function changeFonts() {
 }
 
 window.onload = function() {
-	var w = document.getElementById('wrapper');
-	//var color = Math.floor(Math.random()*16777215).toString(16);
-	var color = getColor('warm', 'bright');
-	document.body.style.background = "#" + color;
 
-	console.log(color);
-	//w.style.backgroundColor = "#"+color;
+	var scheme = window.localStorage.getItem('id');
+	var answers = scheme.split(',');
+	var mood = answers[0];
+	var shade = answers[1];
+	var fontstyle = answers[2];
+	console.log(mood);
+	console.log(shade);
+	console.log(fontstyle);
 
-	var h1font = getFont('header', 'script');
-	var h2font = getFont('subheader', 'serif');
-	var pfont = getFont('paragraph', 'sansSerif');
+	var h1font = getFont('header', fontstyle);
+	var h2font = getFont('subheader', fontstyle);
+	var pfont = getFont('paragraph', fontstyle);
 
 	changeFonts(h1font, h2font, pfont);
 
+	document.getElementById('copy').innerHTML = concatFonts(convertWebFont(h1font, h2font, pfont));
+
+	var w = document.getElementById('wrapper');
+	//var color = Math.floor(Math.random()*16777215).toString(16);
+	var color = getColor(mood, shade);
+	document.body.style.background = "#" + color;
 }
