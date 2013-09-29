@@ -5,61 +5,79 @@
 		<title>Color Scheme Generator</title>
 
 		<!--stylesheets-->
-		<link href="style.css" rel ="stylesheet">
+		<link href="style2.css" rel ="stylesheet">
 
 		<!--Loads web fonts-->
+		<link href='http://fonts.googleapis.com/css?family=Lato|Merriweather+Sans' rel='stylesheet' type='text/css'>
 		
+		<script src="C:\Program Files\jquery-1.10.2.min.js"></script>
+
+		<script>
+			var questions = [
+				{
+					"q": "Pick a tone...", 
+					"a1": 'Warm', 
+					"a2": 'Cool', 
+					"a3": 'Neutral'},
+				{
+					"q": 'What style do you like?', 
+					"a1": 'Bright', 
+					"a2": 'Dark', 
+					"a3": 'Pastel'}, 
+				{
+					"q": 'Are you...',
+					"a1": 'Casual',
+					"a2": 'Formal', 
+					"a3": 'IDK'}
+
+			];	
+
+
+			var clickCount = 0;
+
+			$(document).ready(function() {
+				var scheme = [];
+				$(".answer").click(function() {
+					scheme.push($(this).val());
+					console.log(scheme);
+					clickCount++;
+					if (clickCount == questions.length) {
+						//////////////////
+						
+						return scheme;
+					}
+					changeQ(clickCount);
+				});
+			});
+			
+			function changeQ(qNumber) {
+				document.getElementById("question").innerHTML=questions[qNumber]["q"];
+				document.getElementById("answer1").value=questions[qNumber]["a1"];
+				document.getElementById("answer2").value=questions[qNumber]["a2"];
+				document.getElementById("answer3").value=questions[qNumber]["a3"];
+			}
+
+		</script>		
+
 	</head>
 
 	<body>
-		<div class="wrapper">
-			<nav>
-		
-			</nav>
+		<center>
 
-			<div id="content">
-				<center>
-					<h1>Color Scheme Generator</h1>
-				
-					<h2>Colors Yay</h2>
+			<h1>Colors and Fonts</h1>
 
-					<p>We make you colors.</p>
+			<p>For the lazy and indecisive.</p>
 
-				</center>
-			</div>
+			<h2 id="question">Pick a tone...</h2>
+				<input type="button" class="answer" id="answer1" value="Warm">
+				<input type="button" class="answer" id="answer2" value="Cool">
+				<input type="button" class="answer" id="answer3" value="Neutral">
 
-		</div>
-
-		<script>
-
-			var questions = {
-				['What is your favorite color', 'blue', 'pink', 'purple'],
-				['What style do you like?', 'bright', 'dark', 'pastel'],
-				['How many colors do you want', 2, 3, 4]
-			};	
-
-			var scheme = [];
-
-			for (var i = 0; i < questions.length; i++) {
-				askQ(questions[i]);
-			}
-
-			function askQ(question) {
-				var response = prompt(question[0], ''); //what does the quotes do
-				if (answer == question[1]) {
-					scheme.push(question[1]);
-				}
-				else if (answer == question[2]) {
-					scheme.push(question[2]);
-				} else {
-					scheme.push(question[3]);
-				}
-			}
-
-		</script>
-
+		</center>
 	</body>
 </html>
+
+
 
 
 

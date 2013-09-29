@@ -1,0 +1,115 @@
+/* style2.css */
+
+	<style>
+			body, html {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			body {
+				background-color: #E8E8E8
+			}
+
+			h1 {
+				font-family: 'Lato', sans-serif;
+				font-size: 100px;
+				color: #606060;
+				text-align: center;
+			}
+
+			h2 {
+				font-family: 'Lato', sans-serif;
+				font-size: 50px;
+				color: #606060;
+			}
+
+			p {
+				font-family: 'Lato', sans-serif;
+				font-size: 30px;
+				color: #606060 ;
+				padding-left: 100px;
+				padding-right: 100px;
+				margin-top: -50px;
+				margin-bottom: 0px;
+			}
+
+			input {
+				width:250px;
+				height:125px;
+				font-family:'Merriweather Sans', sans-serif;
+				font-size: 50px;
+				text-align: center;
+				background-color: white;
+				border-style: none;
+				border-color: gray;
+				border-width: 5px;
+				/*margin-right: 20px;*/
+			}
+
+			input:hover {
+				background: #606060;
+				color: white;
+			}
+
+			#test p {
+				margin-top: 25px;
+				font-size: 21px;
+				text-align: center;
+				animation: fadein 2s;
+				-moz-animation: fadein 2s; /* Firefox */
+				-webkit-animation: fadein 2s; /* Safari and Chrome */
+				-o-animation: fadein 2s; /* Opera */
+			}
+			@keyframes fadein {
+    			from {
+        			opacity:0;
+    			}
+    			to {
+        			opacity:1;
+    			}
+			}
+			@-moz-keyframes fadein { /* Firefox */
+    			from {
+        			opacity:0;
+    			}
+    			to {
+        			opacity:1;
+    			}
+			}
+			@-webkit-keyframes fadein { /* Safari and Chrome */
+    			from {
+        			opacity:0;
+    			}
+    			to {
+			        opacity:1;
+    			}
+			}
+			@-o-keyframes fadein { /* Opera */
+    			from {
+        			opacity:0;
+    			}
+    			to {
+        			opacity: 1;
+    			}
+			}​
+			
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
