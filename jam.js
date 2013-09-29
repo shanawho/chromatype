@@ -1,6 +1,6 @@
 //FONTS
 var headerSans = ['Quicksand', 'Rokkitt', 'Sanchez', 'Oswald', 'Nunito', 'Yanone Kaffeesatz', 
-				'Maven Pro', 'Cabin Condensed', 'Overlock', 'PT Sans', 'Raleway'];
+				'Maven Pro', 'Cabin Condensed', 'Overlock', 'Raleway'];
 var headerSerif = ['Libre Baskerville', 'Alegreya', 'Playfair Display', 'Lora', 
 					'Bitter', 'Kreon', 'Jacques Francois', 'Marcellus', 'Quattrocentro',
 			'Bentham', 'Alice'];
@@ -48,13 +48,16 @@ function getFont(tag, type) {
 
 
 function convertWebFont() {
-	var concat = 'Lato';
+	var concat = '';
 	for (var i=0; i < arguments.length; i++) {
-		concat = concat + '|' + arguments[i].replace(/\s/,'+');
+		if (i == 0) {
+			concat += arguments[i].replace(/\s/, '+');
+		} else {
+			concat = concat + '|' + arguments[i].replace(/\s/,'+');
+		}
 	}
 	return concat;
 }
-
 
 function convertHex(num) {
 	//num always <= 255;
@@ -74,8 +77,9 @@ function convertHex(num) {
 		hex = a + dict[r];
 	} else {
 		hex = a + r.toString();
-	}
 
+	}
+	console.log(hex);
 	return hex;
 }
 
@@ -127,7 +131,6 @@ function concatFonts(fonts) {
 }
 function linkFonts(fonts) {
 	var docHead = document.getElementsByTagName('head')[0].innerHTML;
-
 	var webFontLink = concatFonts(fonts);
 	docHead += webFontLink;
 	document.getElementsByTagName('head')[0].innerHTML = docHead;
@@ -150,8 +153,10 @@ function changeFonts() {
 	h1.style.fontFamily = h1font;
 	h2.style.fontFamily = h2font;
 	p.style.fontFamily = pfont;
+
+	document.getElementById('button1').style.fontFamily = pfont;
+	document.getElementById('button2').style.fontFamily = pfont;
 	document.getElementById('copy').style.fontFamily = pfont;
-	document.getElementById('button').style.fontFamily = pfont;
 
 	//google web font link in <head>
 	var fonts = convertWebFont(h1font, h2font, pfont);
@@ -173,13 +178,13 @@ window.onload = function() {
 	changeFonts(h1font, h2font, pfont);
 
 	var link = concatFonts(convertWebFont(h1font, h2font, pfont).toString());
-	console.log(link);
 	document.getElementById('text').innerHTML = link;
 
 	var w = document.getElementById('wrapper');
 	var color = "#" + getColor(mood, shade);
 
 	document.getElementById('hex').innerHTML = color;
-
+	document.getElementById('button1').style.backgroundColor = color;
+	document.getElementById('button2').style.backgroundColor = color;
 	document.body.style.background = color;
 }
