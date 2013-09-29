@@ -28,7 +28,7 @@ function getFont(tag, type) {
 				return headerSerif[i];
 			}
 		case 'subheader':
-			if (type == 'fomal') {
+			if (type == 'formal') {
 				i = Math.floor(Math.random()*subSans.length);
 				return subSans[i];
 			} else if (type == 'casual') {
@@ -68,19 +68,22 @@ function convertHex(num) {
 	var a;
 	var hex;
 
-	if (f >= 10) {
+	if (f >= 16) {
+		a = f % 16;
+	} else if (f >= 10 && f <= 15) {
 		a = dict[f];
 	} else {
 		a = f.toString();
 	}
 
-	if (r >= 10) {
+	if (r >= 16) {
+		hex = '' + a + r % 16;
+	} else if (r >= 10 && r <= 15) {
 		hex = a + dict[r];
 	} else {
 		hex = a + r.toString();
 
 	}
-	console.log(hex);
 	return hex;
 }
 
@@ -95,7 +98,6 @@ function getColor(mood, shade) {
 	if (mood == 'warm') {
 		red = Math.floor((Math.random()*25)+230);
 		if (shade == 'bright') {			
-			console.log('warm bright');
 			green = Math.floor((Math.random()*255)+1);
 			blue = 0;
 		} else if (shade == 'dark') {
