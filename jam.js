@@ -10,7 +10,7 @@ var subSerif = ['Lora', 'Merriweather', 'Libre Baskerville'];
 var paragraphSans = ['PT Sans', 'Lato', 'Open Sans', 'Source Sans Pro', 'Merriweather Sans'];
 var paragraphSerif = ['Lora', 'Merriweather', 'Libre Baskerville']
 var script = ['Cherry Swash', 'Pacifico', 'Oleo Script', 'Berkshire Swash', 
-			'Leckerli One', 'Cookie', 'Grand Hotel', 'Sofia']
+			'Leckerli One', 'Grand Hotel', 'Sofia']
 
 
 
@@ -159,9 +159,13 @@ function getColor(mood, shade) {
 function linkFonts(fonts) {
 	var docHead = document.getElementsByTagName('head')[0].innerHTML;
 	var webFontLink = "<link href='http://fonts.googleapis.com/css?family=" + fonts + "' rel='stylesheet' type='text/css'>";
+	
+	document.getElementById('copy').innerHTML = webFontLink;
+
 	docHead += webFontLink;
-	console.log(docHead);
 	document.getElementsByTagName('head')[0].innerHTML = docHead;
+
+	//and edit text
 }
 
 function changeFonts() {
@@ -191,9 +195,9 @@ function changeFonts() {
 }
 
 window.onload = function() {
-	var w = document.getElementById("wrapper");
+	var w = document.getElementById('wrapper');
 	//var color = Math.floor(Math.random()*16777215).toString(16);
-	var color = getColor('cool', 'bright');
+	var color = getColor('warm', 'bright');
 	document.body.style.background = "#" + color;
 
 	console.log(color);
@@ -204,4 +208,5 @@ window.onload = function() {
 	var pfont = getFont('paragraph', 'sansSerif');
 
 	changeFonts(h1font, h2font, pfont);
+
 }
