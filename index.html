@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Color Scheme Generator</title>
+
+		<!--stylesheets-->
+		<link href="css/style2.css" rel ="stylesheet">
+
+		<!--Loads web fonts-->
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		
+		<script src="js/jquery-1.10.2.min.js"></script>
+
+		<script>
+			var questions = [
+				{
+					"q": "Pick a tone...", 
+					"a1": 'warm', 
+					"a2": 'cool'},
+				{
+					"q": 'What style do you like?', 
+					"a1": 'bright', 
+					"a2": 'dark'}, 
+				{
+					"q": 'Are you...',
+					"a1": 'casual',
+					"a2": 'formal'}
+			];	
+
+
+			var clickCount = 0;
+
+			$(document).ready(function() {
+				var scheme = [];
+				$(".answer").click(function() {
+					scheme.push($(this).val());
+					console.log(scheme);
+					clickCount++;
+					if (clickCount == questions.length) {
+						window.localStorage.setItem('id', scheme);
+						document.location.href = 'jam.html';
+						return scheme;
+					}
+					changeQ(clickCount);
+				});
+			});
+			
+			function changeQ(qNumber) {
+				document.getElementById("question").innerHTML=questions[qNumber]["q"];
+				document.getElementById("answer1").value=questions[qNumber]["a1"];
+				document.getElementById("answer2").value=questions[qNumber]["a2"];
+			}
+
+		</script>		
+
+	</head>
+
+	<body>
+		<center>
+
+			<h1>ChromaType</h1>
+
+			<p>For the lazy and indecisive.</p>
+
+			<h2 id="question">Pick a tone...</h2>
+				<input type="button" class="answer" id="answer1" value="warm">
+				<input type="button" class="answer" id="answer2" value="cool">
+
+		</center>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+/* style2.css */
+
+	<style>
+			body, html {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			body {
+				margin-top: 200px;
+				background-color: #E8E8E8;
+			}
+
+			h1 {
+				font-family: 'Lato', sans-serif;
+				font-size: 6em;
+				color: #34282C;
+				text-align: center;
+				line-height: .8em;
+			}
+
+			h2 {
+				margin-top: 100px;
+				font-family: 'Lato', sans-serif;
+				font-size: 4em;
+				line-height: 0;
+				color: #606060;
+			}
+
+			p {
+				font-family: 'Lato', sans-serif;
+				font-size: 2em;
+				color: #606060 ;
+				padding-left: 100px;
+				padding-right: 100px;
+				margin-top: -50px;
+				margin-bottom: 0px;
+			}
+
+			input {
+				width:250px;
+				height:125px;
+				font-family:'Lato', sans-serif;
+				font-size: 4em;
+				color: #34282C;
+				text-align: center;
+				background-color: white;
+				border-style: none;
+				border-color: gray;
+				border-width: 5px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+			}
+
+			input:hover {
+				background: #606060;
+				color: white;
+			}
+
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
