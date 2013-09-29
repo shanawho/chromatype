@@ -5,6 +5,7 @@ html, body {
 
 html, body {
 	height: 100%;
+	overflow-y: hidden;
 }
 
 #wrapper {
@@ -31,7 +32,7 @@ html, body {
 p {
 	width: 600px;
 	margin: 0 auto;
-	padding: 50px;
+	padding: 25px;
 	padding-top: 0;
 	text-align: left;
 }
@@ -41,10 +42,19 @@ p {
 }
 
 #copy {
-	font-family: 'Open Sans';
-	font-size: .8em;
-	width: 650px;
-	background-color: #aaaaaa;
+	margin: 0 auto;
+	width: 700px;
+
+}
+
+textarea {
+	margin: 0 auto;
+	border-color: #aaaaaa;
+	font-size: 1em;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    resize: none;
 }
 
 
@@ -52,9 +62,8 @@ input {
 	border-style: none;
 	background-color: #aaaaaa;
 	font-color: black;
-	padding: 5px;
+	padding: px;
 	font-family: sans-serif;
 	font-size: 1em;
-
 }
 
