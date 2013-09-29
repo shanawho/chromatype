@@ -17,18 +17,15 @@
 				{
 					"q": "Pick a tone...", 
 					"a1": 'Warm', 
-					"a2": 'Cool', 
-					"a3": 'Neutral'},
+					"a2": 'Cool'},
 				{
 					"q": 'What style do you like?', 
 					"a1": 'Bright', 
-					"a2": 'Dark', 
-					"a3": 'Pastel'}, 
+					"a2": 'Dark'}, 
 				{
 					"q": 'Are you...',
 					"a1": 'Casual',
-					"a2": 'Formal', 
-					"a3": 'IDK'}
+					"a2": 'Formal'}
 
 			];	
 
@@ -43,8 +40,6 @@
 					clickCount++;
 					if (clickCount == questions.length) {
 						document.location.href = 'jam.html';
-
-
 						return scheme;
 					}
 					changeQ(clickCount);
@@ -55,7 +50,6 @@
 				document.getElementById("question").innerHTML=questions[qNumber]["q"];
 				document.getElementById("answer1").value=questions[qNumber]["a1"];
 				document.getElementById("answer2").value=questions[qNumber]["a2"];
-				document.getElementById("answer3").value=questions[qNumber]["a3"];
 			}
 
 		</script>		
@@ -72,7 +66,6 @@
 			<h2 id="question">Pick a tone...</h2>
 				<input type="button" class="answer" id="answer1" value="Warm">
 				<input type="button" class="answer" id="answer2" value="Cool">
-				<input type="button" class="answer" id="answer3" value="Neutral">
 
 		</center>
 	</body>
