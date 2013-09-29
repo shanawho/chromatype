@@ -16,15 +16,16 @@ function getFont(tag, type) {
 	var font;
 	switch (tag) {
 		case 'header':
-			if (type == 'casual') {
+			var scr = Math.floor(Math.random()*2 + 1);
+			if (scr == 1) {
+				i = Math.floor(Math.random()*script.length);
+				return script[i];	
+			} else if (type == 'casual') {
 				i = Math.floor(Math.random()*headerSans.length);
 				return headerSans[i];
 			} else if (type == 'formal') {
 				i = Math.floor(Math.random()*headerSerif.length);
 				return headerSerif[i];
-			} else if (type == 'script') {
-				i = Math.floor(Math.random()*script.length);
-				return script[i];		
 			}
 		case 'subheader':
 			if (type == 'fomal') {
@@ -100,10 +101,6 @@ function getColor(mood, shade) {
 		} else if (shade == 'dark') {
 			green = Math.floor((Math.random()*170)+1);
 			blue = Math.floor((Math.random()*45)+1);
-		} else if (shade == 'pastel') {
-			red = 255;
-			green = Math.floor((Math.random()*10)+230);
-			blue = Math.floor((Math.random()*25)+230);
 		}
 	} else if (mood == 'cool') {
 		if (shade == 'bright') {
@@ -114,10 +111,6 @@ function getColor(mood, shade) {
 			red = 0;
 			green = Math.floor((Math.random()*120)+1); 
 			blue = Math.floor((Math.random()*125)+125);
-		} else if (shade == 'pastel') {
-			red = 255;
-			green = Math.floor((Math.random()*25)+240);
-			blue = Math.floor((Math.random()*25)+240);
 		}
 	}
 	return concatHex(convertHex(red), convertHex(green), convertHex(blue));
